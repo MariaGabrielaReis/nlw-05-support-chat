@@ -32,7 +32,7 @@ As seguintes tecnologias e ferramentas estão sendo utilizadas neste projeto:
 
 <div id="requisitos">
 
-# Como rodar
+# :gear: Como rodar
 
 Antes de começar, você vai precisar ter instalado algumas coisinhas, como o Node.js e o Yarn, é só seguir esse passo a passo [aqui](https://www.notion.so/Instala-o-das-ferramentas-405f3e8b014649cbb422dee6b5bd0535). Ah, tenha também o [Git](https://git-scm.com/), para clonar este repositório! 
 
@@ -71,7 +71,7 @@ $ yarn dev
 <div id="licenca">
 
 # :page_with_curl: Licença
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.md) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 </div>
 
