@@ -1,6 +1,6 @@
 import { request, Router } from "express"
 import { getCustomRepository } from "typeorm"
-import { SettingsRepository } from "./database/repositories/SettingsRepository"
+import { SettingsRepository } from "./repositories/SettingsRepository"
 
 const routes = Router()
 
