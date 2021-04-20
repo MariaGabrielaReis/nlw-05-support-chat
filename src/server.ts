@@ -1,7 +1,13 @@
-import express, { request, response } from "express";
+import express from "express";
 import "./database";
+import { routes } from "./routes"
 
 const app = express();
+
+//habilita receber JSON do req.body
+app.use(express.json())
+
+app.use(routes)
 
 /* MÉTODOS HTTP QUE VAMOS USAR
   GET = busca
@@ -10,17 +16,5 @@ const app = express();
   DELETE = exclusão
   PATCH = alterar informação específica
 */
-
-app.get("/", (request, response) => {
-  return response.json({
-    message: "Olá, NLW 05!"
-  })
-})
-
-app.post("/", (request, response) => {
-  return response.json({
-    message: "Usuário salvo com sucesso!"
-  })
-})
 
 app.listen(3333, () => console.log("Servidor rodando na porta 3333"))
