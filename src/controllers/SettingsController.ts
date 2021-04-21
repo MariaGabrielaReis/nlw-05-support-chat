@@ -1,6 +1,5 @@
 import { Request, Response } from "express"
-import { getCustomRepository } from "typeorm"
-import { SettingsRepository } from "../repositories/SettingsRepository"
+import { SettingsService } from "../services/SettingsService"
 
 /**
  * TIPOS DE PARÂMETROS
@@ -12,15 +11,11 @@ import { SettingsRepository } from "../repositories/SettingsRepository"
 class SettingsController {
   async create(request: Request, response: Response) {
     const { chat, username } = request.body;
-    const settingsRepository = getCustomRepository(SettingsRepository)
 
-    const settings = settingsRepository.create({
-      chat,
-      username
-    })
+    const settingsService = new SettingsService()
 
-    await settingsRepository.save(settings)
-
+    const settings = await settingsService.create({chat, username})
+    
     return response.json(settings)
     }
 }
