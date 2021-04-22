@@ -1,20 +1,33 @@
 import express from "express";
+import { createServer } from "http";
+import { Server, Socket } from "socket.io";
+import path from "path";
+
 import "./database";
-import { routes } from "./routes"
+import { routes } from "./routes";
 
 const app = express();
 
 //habilita receber JSON do req.body
-app.use(express.json())
+app.use(express.json());
 
-app.use(routes)
+//habilita o uso dos arquivos da pasta public
+app.use(express.static(path.join(__dirname, "..", "public")));
+app.set("views", path.join(__dirname, "..", "public"));
+app.engine("html", require("ejs").renderFile);
+app.set("view engine", "html");
 
-/* MÉTODOS HTTP QUE VAMOS USAR
-  GET = busca
-  POST = criação
-  PUT = alteração
-  DELETE = exclusão
-  PATCH = alterar informação específica
-*/
+app.get("/pages/client", (request, response) => {
+  return response.render("html/client.html");
+});
 
-app.listen(3333, () => console.log("Servidor rodando na porta 3333"))
+app.use(routes);
+
+const http = createServer(app); //criando protocolo HTTP
+const io = new Server(http); //criando protocolo websocket
+
+io.on("connection", (socket: Socket) => {
+  console.log("Conectou, ", socket.id);
+});
+
+http.listen(3333, () => console.log("Servidor rodando na porta 3333"));
