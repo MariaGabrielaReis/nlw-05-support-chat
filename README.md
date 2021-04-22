@@ -21,12 +21,12 @@ Este é um serviço de "suporte ao cliente", que consiste no desenvolvimento de 
   <img width="700" height="400" src="diagrama.png">
 </p>
 
-
 </div>
 
 <div id="tecs">
 
 # :hammer_and_wrench: Tecnologias
+
 As seguintes tecnologias e ferramentas estão sendo utilizadas neste projeto:
 
 - TypeScript
@@ -34,6 +34,7 @@ As seguintes tecnologias e ferramentas estão sendo utilizadas neste projeto:
 - Express
 - SQLite
 - Insomnia
+- Web Socket
 
 </div>
 
@@ -41,7 +42,7 @@ As seguintes tecnologias e ferramentas estão sendo utilizadas neste projeto:
 
 # :gear: Como rodar
 
-Antes de começar, você vai precisar ter instalado algumas coisinhas, como o Node.js e o Yarn, é só seguir esse passo a passo [aqui](https://www.notion.so/Instala-o-das-ferramentas-405f3e8b014649cbb422dee6b5bd0535). Tenha também o [Git](https://git-scm.com/), para clonar este repositório! 
+Antes de começar, você vai precisar ter instalado algumas coisinhas, como o Node.js e o Yarn, é só seguir esse passo a passo [aqui](https://www.notion.so/Instala-o-das-ferramentas-405f3e8b014649cbb422dee6b5bd0535). Tenha também o [Git](https://git-scm.com/), para clonar este repositório!
 
 ```bash
 # Clone esse repositório
@@ -51,18 +52,16 @@ $ git clone https://github.com/MariaGabrielaReis/nlw-05-support-chat.git
 $ cd src
 
 # Instale as dependências do projeto, assim como suas tipagens
-$ npm install
-# ou
 $ yarn
 
-# Para criar o banco de dados e suas tabelas, as migrations
+# Para criar o banco de dados e suas tabelas, rode as migrations
 $ yarn typeorm migration:run
 
 # Execute a aplicação
 $ yarn dev
 
 # O servidor inciará na porta:3333 - acesse http://localhost:3333
-# Para utilizar as funcionalidades da aplicação, use o Insomnia para simular requesisições e respostas das rotas
+# Para utilizar as funcionalidades da aplicação, use o Insomnia para simular requisições e respostas das rotas
 ```
 
 </div>
@@ -72,18 +71,26 @@ $ yarn dev
 # :railway_track: Rotas
 
 #### GET
+
 - http://localhost:3333/messages/:id (lista mensagens enviadas ou recebidas por um usuário)
+- http://localhost:3333/settings/:username (lista as configurações de um determinado usuário)
 
 #### POST
+
 - http://localhost:3333/settings (cria instância na tabela "Settings")
 - http://localhost:3333/users (cria um usuário)
 - http://localhost:3333/messages (salva uma mensagem)
+
+#### PUT
+
+- http://localhost:3333/settings/:username (atualiza dados das configurações de um determinado usuário)
 
 </div>
 
 <div id="licenca">
 
 # :page_with_curl: Licença
+
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 </div>
