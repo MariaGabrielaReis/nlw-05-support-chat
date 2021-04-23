@@ -6,6 +6,7 @@
   <a href="#projeto">Sobre a aplicação</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#tecs">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#requisitos">Como rodar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#demo">Demonstração</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rotas">Rotas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#licenca">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#dev">Dev</a>
@@ -66,7 +67,18 @@ $ yarn dev
 
 </div>
 
-<div id="layout">
+<div id="demo">
+  
+# :desktop_computer: Demonstração
+Se o usuário optar por usar o chat de suporte, temos "dois lados da mesma moeda": o chat em que o atendente envia mensagens e o chat que o cliente envia mensagens. Assim que o cliente aciona o suporte e inicia uma conversa, o atendente é notificado, podendo conversar com o cliente. A cada novo cliente, novos chats são criados!
+
+<p align="center">
+  <img width="700" src="demo.gif">
+</p>
+
+</div>
+
+<div id="rotas">
   
 # :railway_track: Rotas
 
