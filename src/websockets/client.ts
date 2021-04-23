@@ -15,15 +15,12 @@ io.on("connect", (socket) => {
 
   socket.on("client_first_access", async (params) => {
     const socket_id = socket.id;
-
     const { text, email } = params as IParams;
     let user_id = null;
 
     const userExists = await usersService.findByEmail(email);
 
-    //salvar a conexão com user_id e socket_id
     if (!userExists) {
-      //cria o usuário, se ele não existir, junto com a conexão dele
       const user = await usersService.create(email);
 
       await connectionsService.create({
@@ -34,17 +31,14 @@ io.on("connect", (socket) => {
       user_id = user.id;
     } else {
       user_id = userExists.id;
-
       const connection = await connectionsService.findByUserId(userExists.id);
 
       if (!connection) {
-        //se existir usuário mas não tiver nenhuma conexão ainda
         await connectionsService.create({
           socket_id,
           user_id: userExists.id,
         });
       } else {
-        //vai sobrescrever o id do socket caso já exista conexão daquele usuário
         connection.socket_id = socket_id;
         await connectionsService.create(connection);
       }
@@ -58,5 +52,26 @@ io.on("connect", (socket) => {
     const allMessages = await messagesService.listByUser(user_id);
 
     socket.emit("client_list_all_messages", allMessages);
+
+    const allUsers = await connectionsService.findAllWithoutAdmin();
+    io.emit("admin_list_all_users", allUsers);
+  });
+
+  socket.on("client_send_to_admin", async (params) => {
+    const { text, socket_admin_id } = params;
+
+    const socket_id = socket.id;
+
+    const { user_id } = await connectionsService.findBySocketID(socket_id);
+
+    const message = await messagesService.create({
+      text,
+      user_id,
+    });
+
+    io.to(socket_admin_id).emit("admin_receive_message", {
+      message,
+      socket_id,
+    });
   });
 });
