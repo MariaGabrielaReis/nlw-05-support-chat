@@ -314,10 +314,10 @@ input[type="text"]:focus {
 
 .admin_message_client {
   width: 300px;
-  background: #6f5eab;
+  background: #27caa1be;
   padding: 10px;
   margin: 10px;
-  color: #eee;
+  color: rgb(243, 243, 243);
   display: flex;
   flex-direction: column;
 
